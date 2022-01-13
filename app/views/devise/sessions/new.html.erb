@@ -1,7 +1,6 @@
 <h2>Log in</h2>
 
-<%= form_with model:@user,url: user_session_path,method: :put,local:true do |f| %>
-<!--methodにput指定している教科書と違う-->
+<%= form_with model:@user,url: user_session_path,local:true do |f| %>
 
   <div class="field">
     <%= f.label :email %><br />
