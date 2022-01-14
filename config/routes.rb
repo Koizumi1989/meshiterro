@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :post_images,only:[:new,:index,:show]
+  # get 'post_images/new'
+  # get 'post_images/index'
+  # get 'post_images/show'
+  # 今回は新規投稿、一覧、詳細機能、消去しか使わないため
+  
   devise_for :users
   root to: "homes#top"
   get 'homes/about' => 'homes#about',as:'about'
