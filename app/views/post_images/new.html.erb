@@ -1,2 +1,14 @@
-<h1>PostImages#new</h1>
-<p>Find me in app/views/post_images/new.html.erb</p>
+<h1>画像投稿フォーム</h1>
+<%= form_with model:@post_image,local:true do |f| %>
+
+<h4>画像</h4>
+<%= f.file_field :image,accept:"image/*" %>
+<!--file_fieldは、ファイルの投稿をするためのフィールドなので、-->
+<!--画像ファイル以外の全てのファイル(音声ファイルや動画ファイルなど)も投稿できてしまいます。-->
+<!--そのため今回は、accept: "image/*"を使い、画像ファイルしか投稿できないようにしています。-->
+<h4>ショップ名</h4>
+<%= f.text_field :shop_name %>
+<h4>説明</h4>
+<%= f.text_area :caption %>
+<%= f.submit '投稿' %>
+<% end %>

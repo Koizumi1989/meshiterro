@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :post_images,only:[:new,:index,:show]
+  resources :post_images,only:[:new,:create,:index,:show]
   # get 'post_images/new'
   # get 'post_images/index'
   # get 'post_images/show'
   # 今回は新規投稿、一覧、詳細機能、消去しか使わないため
+  # create追加
   
   devise_for :users
   root to: "homes#top"
