@@ -1,7 +1,9 @@
 <% @post_images.each do |post_image| %>
 <!--コントローラから渡された@post_images変数内から1つずつ取り出して、post_image変数へ格納します。-->
 <div>
+  <%= link_to post_image_path(post_image.id) do %>
   <%= image_tag post_image.get_image %>
+  <% end %>
   <!--image_tagを使いpost_imageにActiveStorageで設定したimageを表示しています。-->
   <!--post_image.get_imageの部分はPostImageモデル内に記述したget_imageメソッドを呼び出しています。-->
   <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
