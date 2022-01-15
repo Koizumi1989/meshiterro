@@ -1,5 +1,10 @@
 <% @post_images.each do |post_image| %>
-<!--コントローラから渡された@post_images変数内から1つずつ取り出して、post_image変数へ格納します。-->
+<!--コントローラから渡された@post_images(中身PostImage.all：PostImageの全データ）を-->
+<!--変数内から1つずつ取り出して、1つづつpost_image変数へ格納します。まず1から始まり-->
+<!--endまで行ったら上に戻って、次は2を格納のような流れ-->
+<!--ここはindexページでこの処理でやりたいことは、画像を押すとindexページからshowの個別ページ-->
+<!--に飛びたい。そのため、post_image_path(post_image.id)は左からshowのパス、eachに格納されている-->
+<!--post_image.idとする-->
 <div>
   <%= link_to post_image_path(post_image.id) do %>
   <%= image_tag post_image.get_image %>
