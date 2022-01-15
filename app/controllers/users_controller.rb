@@ -8,5 +8,19 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(@user.id)
+    # ユーザーズのshow画面へ飛ぶようにする。現段階では個別のshow画面へのリンクは未作成。
+    # エラーの原因はパスは個別のshow画面で()内はusersのidを記載していた。
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:name, :profile_image)
   end
 end
