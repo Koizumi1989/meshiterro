@@ -25,10 +25,15 @@ class PostImagesController < ApplicationController
     # @post_image.user_id : 投稿したユーザを識別する ID　今回はこれを保存
     # @post_image.shop_name : お店の名前
     # @post_image.caption : 画像の説明
-    @post_image.save
-    redirect_to post_images_path
+    if @post_image.save
+      redirect_to post_images_path
+      # PostImageモデルへ保存した後、投稿一覧画面(post_images/index.html)へリダイレクトします。
+    else
+      render :new
+      # 対象カラム(post_image.rbで設定したvalidation:カラム)
+      # にデータが入っていなければ、画像投稿ページ(post_images/new.htmlを再表示。
+    end
   end
-  # PostImageモデルへ保存した後、投稿一覧画面へリダイレクトします。
 
   def index
     @post_images = PostImage.all
