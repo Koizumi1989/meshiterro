@@ -9,6 +9,19 @@
   <% end %>
   <!--投稿した本人以外が削除できないように、投稿した本人がログイン-->
   <!--している場合だけ画面に削除リンクを表示させる方法を学んだ-->
+    <% if @post_image.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_image_favorites_path(@post_image), method: :delete do %>
+        ♥<%= @post_image.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_image_favorites_path(@post_image), method: :post do %>
+        ♡<%= @post_image.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
 </div>
 
 <div>

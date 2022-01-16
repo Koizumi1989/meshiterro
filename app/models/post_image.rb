@@ -3,7 +3,8 @@ class PostImage < ApplicationRecord
   belongs_to :user
   # post image belongs to user(postimageは1人のユーザに属してる。）
   has_many :post_comments, dependent: :destroy
-
+  has_many :favorites, dependent: :destroy
+  
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -16,4 +17,8 @@ class PostImage < ApplicationRecord
   # get_imageメソッドの意味：このメソッドの内容は、画像が設定されない場合はapp/assets/imagesに
   # 格納されているno_image.pngという画像をデフォルト画像としてをActiveStorageに格納し、格納した
   # 画像を表示するというものです。
+  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 end

@@ -11,7 +11,7 @@ class User < ApplicationRecord
   # モデル同士の関連付け
   # 下記はpostimageモデルとpostcommentモデルの関連付け
   has_many :post_comments, dependent: :destroy
-
+  has_many :favorites, dependent: :destroy
   has_one_attached :profile_image
   # has_one_attached :profile_imageという記述により、profile_imageという
   # 名前でActiveStorageでプロフィール画像を保存できるように設定しました。
