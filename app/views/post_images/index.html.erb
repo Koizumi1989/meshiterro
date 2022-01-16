@@ -1,24 +1,36 @@
-<% @post_images.each do |post_image| %>
+<h1>post_images/index.html</h1>
+
+<%= render 'list',post_images:@post_images %>
+<!--<%#= render [部分テンプレートファイルの指定], [ローカル変数]:[渡す値] %>-->
+<!--部分テンプレートファイルを呼び出すには、renderを使う-->
+<!--'list'で部分テンプレートのパスを記述する-->
+<!--その際、アンダースコアは省略する-->
+<!--また、post_images/list.html.erbが本来の呼び出し方だが、拡張子は省略でき、-->
+<!--同じフォルダ内から呼び出す場合はフォルダ名も省略できる-->
+<!--ローカル変数（'post_images'）に渡すインスタンス変数（@post_images）を指定する-->
+
+
+<!--<%# @post_images.each do |post_image| %>-->
 <!--コントローラから渡された@post_images(中身PostImage.all：PostImageの全データ）を-->
 <!--変数内から1つずつ取り出して、1つづつpost_image変数へ格納します。まず1から始まり-->
 <!--endまで行ったら上に戻って、次は2を格納のような流れ-->
 <!--ここはindexページでこの処理でやりたいことは、画像を押すとindexページからshowの個別ページ-->
 <!--に飛びたい。そのため、post_image_path(post_image.id)は左からshowのパス、eachに格納されている-->
 <!--post_image.idとする-->
-<div>
-  <%= link_to post_image_path(post_image.id) do %>
-  <%= image_tag post_image.get_image %>
-  <% end %>
+<!--<div>-->
+<!--  <%#= link_to post_image_path(post_image.id) do %>-->
+<!--  <%#= image_tag post_image.get_image %>-->
+<!--  <%# end %>-->
   <!--image_tagを使いpost_imageにActiveStorageで設定したimageを表示しています。-->
   <!--post_image.get_imageの部分はPostImageモデル内に記述したget_imageメソッドを呼び出しています。-->
-  <p>投稿ユーザー画像：<%= image_tag post_image.user.get_profile_image("100x100") %></p>
-  <p>ショップ名：<%= post_image.shop_name %></p>
+<!--  <p>投稿ユーザー画像：<%#= image_tag post_image.user.get_profile_image("100x100") %></p>-->
+<!--  <p>ショップ名：<%#= post_image.shop_name %></p>-->
   <!--post_image変数のshop_nameカラムを表示します。 このカラムは、post_imageモデルに定義されています。-->
-  <p>説明：<%= post_image.caption %></p>
+<!--  <p>説明：<%#= post_image.caption %></p>-->
   <!--上に同じ-->
-  <p>ユーザーネーム：<%= post_image.user.name %></p>
+<!--  <p>ユーザーネーム：<%#= post_image.user.name %></p>-->
   <!--post_image変数のuser_idに関連付けられているuserモデルのnameカラムを表示します。-->
   <!--同様にこのカラムも、post_imageモデルに定義されています。-->
-  <p><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>
-  </div>
-<% end %>
+<!--  <p><%#= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>-->
+<!--  </div>-->
+<!--<%# end %>-->
